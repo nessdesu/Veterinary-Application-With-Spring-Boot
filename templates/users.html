@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Listesi - ERU PET CARE</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container text-center">
+        <div class="mainHeader" style="margin-top:4%; margin-right:100%;">
+            <img src="./images/header.png">
+            <img style="height:125px;margin-top:-50px;margin-left:500px" src="./images/header-icon.png">
+            <img style="margin-top:-150px;margin-left:850px" src="./images/header-icon2.png">
+        </div>
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <p>
+                    Hoş geldiniz, <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                </p>
+                <input type="submit" value="Çıkış Yap" />
+            </form>
+        </div>
+
+        <div>
+            <h1>WELCOME TO ERU PET CARE SYSTEM</h1>
+        </div>
+        <div>
+            <h3>Kullanıcı Listesi</h3>
+        </div>
+        <div>
+            <table class="table tables-striped table-bordered">
+              <thead class="thread-dark">
+              <tr>
+                  <th>Kullanıcı ID</th>
+                  <th>Telefon Numarası</th>
+                  <th>E-mail</th>
+                  <th>Adı</th>
+                  <th>Soyadı</th>
+              </tr>
+              </thead>
+                <tbody>
+                    <tr th:each="user: ${listUsers}">
+                        <td th:text="${user.id}">Kullanıcı ID</td>
+                        <td th:text="${user.phoneNumber}">Telefon Numarası</td>
+                        <td th:text="${user.email}">Email</td>
+                        <td th:text="${user.firstName}">Ad</td>
+                        <td th:text="${user.lastName}">Soyad</td>
+                        <td><a th:href="@{'/updateUser/' +${user.id}}">Güncelle</a></td>
+                        <td><a th:href="@{'/deleteUser/'+${user.id}}">Sil</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer" style="background-color:#59A9C2; color: #fff; text-align: center;height: 60px;margin-top: 15px;margin-top: 30pc;">
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">Hakkımızda</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">İletişim</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="https://bm.erciyes.edu.tr/">ERÜ BM</a>
+        <p class="footerText" style="margin-left: 15px;font-size: 12px; color: #fff">© Tüm Hakları Saklıdır. 2021 nessWare, Ankara </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Randevu - ERU PET CARE</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.2/main.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+
+        });
+        calendar.render();
+      });
+
+    </script>
+</head>
+<body>
+<div class="container text-center">
+    <div class="mainHeader" style="margin-top:4%; margin-right:100%;">
+        <img src="./images/header.png">
+        <img style="height:125px;margin-top:-50px;margin-left:500px" src="./images/header-icon.png">
+        <img style="margin-top:-150px;margin-left:850px" src="./images/header-icon2.png">
+    </div>
+    <div>
+        <form th:action="@{/appoint}" method="post">
+
+            <div>
+                <h1>ERU PET CARE Sistemine Hoşgeldiniz.</h1>
+                <h4>Lütfen aşağıdaki takvimden uygun vakitleri seçerek randevu alımı yapınız.</h4>
+            </div>
+            <div>
+                <h3>Randevu Alın</h3>
+                <p>
+                    <label th:text="${#request.userPrincipal.principal.fullName}"></label>
+                </p>
+            </div>
+
+
+            <a th:href="@{/newAppointment}">Randevu Al</a>
+            <div id='calendar'></div>
+        </form>
+    </div>
+</div>
+<div class="footer" style="background-color:#59A9C2; color: #fff; text-align: center;height: 60px;margin-top: 15px;">
+    <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">Hakkımızda</a>
+    <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">İletişim</a>
+    <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="https://bm.erciyes.edu.tr/">ERÜ BM</a>
+    <p class="footerText" style="margin-left: 15px;font-size: 12px; color: #fff">© Tüm Hakları Saklıdır. 2021 nessWare, Ankara </p>
+</div>
+</body>
+</html>

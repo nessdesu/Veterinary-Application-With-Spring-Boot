@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HEKİM BİLGİLERİNİ GÜNCELLE - ERU PET CARE</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+</head>
+<body>
+
+<form th:action="@{/newCall}" method="post" th:object="${callDoctor}">
+    <div class="container text-center">
+        <div class="mainHeader" style="margin-top:4%; margin-right:100%;">
+            <img src="./images/header.png">
+            <img style="height:125px;margin-top:-50px;margin-left:500px" src="./images/header-icon.png">
+            <img style="margin-top:-150px;margin-left:850px" src="./images/header-icon2.png">
+        </div>
+        <div>
+            <h1>WELCOME TO ERU PET CARE SYSTEM</h1>
+        </div>
+        <p>
+            <label th:text="${#request.userPrincipal.principal.fullName}"></label>
+        </p>
+        <div>
+            <h3>Bulunduğunuz bölgeye hekim çağırmak için lütfen aşağıdan adres ve saat seçimlerinizi yapınız.</h3>
+        </div>
+        <div>
+            <label>Adresinizi giriniz:</label><input type="text" maxlength="600" th:field="*{address}">
+            <label>Tarih:</label><input type="date" th:field="*{date}">
+            <label>Saat</label><input type="time" th:field="*{hour}">
+            <label>Çiftlik Hayvanı Cinsi</label>
+            <select required th:field="*{type}">
+            <option value="">Cins Seçiniz</option>
+                <option value="buyuk">Büyük Baş</option>
+                <option value="kucuk">Küçük Baş</option>
+                <option value="at">At</option>
+            </select>
+            <label>Hekim Seçiniz</label>
+            <select class="form-control" required th:field="*{vetName}">
+            <option value="">Hekim Seçiniz</option>
+                <th:block th:each="doctors : ${listDoctors}">
+                    <option th:text="${doctors.vetname}" th:value="${doctors.vetname}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit">Hekim Çağır</button>
+    </div>
+    <div class="footer" style="background-color:#59A9C2; color: #fff; text-align: center;height: 60px;margin-top: 15px;margin-top: 30pc;">
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">Hakkımızda</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">İletişim</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="https://bm.erciyes.edu.tr/">ERÜ BM</a>
+        <p class="footerText" style="margin-left: 15px;font-size: 12px; color: #fff">© Tüm Hakları Saklıdır. 2021 nessWare, Ankara </p>
+    </div>
+</form>
+</body>
+</html>

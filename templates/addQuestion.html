@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HEKİM BİLGİLERİNİ GÜNCELLE - ERU PET CARE</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+</head>
+<body>
+
+<form th:action="@{/addQuestion}" method="post" th:object="${questions}">
+    <div class="container text-center">
+        <div class="mainHeader" style="margin-top:4%; margin-right:100%;">
+            <img src="./images/header.png">
+            <img style="height:125px;margin-top:-50px;margin-left:500px" src="./images/header-icon.png">
+            <img style="margin-top:-150px;margin-left:850px" src="./images/header-icon2.png">
+        </div>
+        <div>
+            <h1>WELCOME TO ERU PET CARE SYSTEM</h1>
+        </div>
+        <div>
+            <h3>Sıkça Sorulan Sorular</h3>
+        </div>
+        <div>
+           <label>Soru</label><input type="text" class="form-control" th:field="*{question}" required>
+            <label>Cevap</label><input type="text" class="form-control" th:field="*{answer}" required>
+        </div>
+        <button type="submit">Soruyu Ekle</button>
+    </div>
+    <div class="footer" style="background-color:#59A9C2; color: #fff; text-align: center;height: 60px;margin-top: 15px;margin-top: 30pc;">
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">Hakkımızda</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">İletişim</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="https://bm.erciyes.edu.tr/">ERÜ BM</a>
+        <p class="footerText" style="margin-left: 15px;font-size: 12px; color: #fff">© Tüm Hakları Saklıdır. 2021 nessWare, Ankara </p>
+    </div>
+</form>
+</body>
+</html>

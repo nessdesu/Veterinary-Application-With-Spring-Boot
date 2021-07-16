@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Randevu BİLGİLERİNİ GÜNCELLE - ERU PET CARE</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<form th:action="@{/newAppointment}" method="post" th:object="${appointment}">
+    <div class="container text-center">
+        <div class="mainHeader" style="margin-top:4%; margin-right:100%;">
+            <img src="./images/header.png">
+            <img style="height:125px;margin-top:-50px;margin-left:500px" src="./images/header-icon.png">
+            <img style="margin-top:-150px;margin-left:850px" src="./images/header-icon2.png">
+        </div>
+        <div>
+            <h1>WELCOME TO ERU PET CARE SYSTEM</h1>
+        </div>
+        <div>
+            <h3>Randevu Güncelle</h3>
+        </div>
+        <div class="container text-align-center">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Randevu ID</label><input type="text" class="form-control" th:field="*{id}" required
+                                                    readonly="readonly">
+                </div>
+                <div class="col-md-3">
+                    <label>Randevu Tarihi</label><input type="date" class="form-control" th:field="*{appointdate}"
+                                                        required>
+                </div>
+                <div class="col-md-3">
+                    <label>Randevu Başlangıç Saati</label><input type="time" class="form-control"
+                                                                 th:field="*{appointstarthour}" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Randevu Bitiş Saati</label><input type="time" class="form-control"
+                                                             th:field="*{appointendhour}" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Hekim Ad-Soyad</label><select class="form-control" required th:field="*{doctorname}">
+                    <option value="">Hekim Seçiniz</option>
+                    <th:block th:each="doctors : ${listDoctors}">
+                        <option th:text="${doctors.vetname}" th:value="${doctors.vetname}"/>
+                    </th:block>
+                </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Email</label><input type="email" class="form-control" th:field="*{email}" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Pet Adı</label><input type="text" class="form-control" th:field="*{patientname}" required>
+                </div>
+                <div class="col-md-3">
+                    <label>Pet tipi</label><select class="form-control" required th:field="*{pettype}">
+                    <option value="">Pet cinsi seçiniz</option>
+                    <option th:value="kedi">Kedi
+                    </option>
+                    <option th:value="kopek">Köpek
+                    </option>
+                </select>
+                </div>
+
+
+                <div class="col-md-3">
+                    <label>Telefon Numarası</label><input type="text" class="form-control" th:field="*{phonenumber}"
+                                                          required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="submit">Randevuyu Güncelle</button>
+        </div>
+    </div>
+    <div class="footer"
+         style="background-color:#59A9C2; color: #fff; text-align: center;height: 60px;margin-top: 15px;margin-top: 30pc;">
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">Hakkımızda</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="#">İletişim</a>
+        <a class="footerLink" style="margin-left: 15px;font-size: 18px; color: #fff" href="https://bm.erciyes.edu.tr/">ERÜ
+            BM</a>
+        <p class="footerText" style="margin-left: 15px;font-size: 12px; color: #fff">© Tüm Hakları Saklıdır. 2021
+            nessWare, Ankara </p>
+    </div>
+</form>
+</body>
+</html>
