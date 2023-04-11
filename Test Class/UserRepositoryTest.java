@@ -39,11 +39,11 @@ public class UserRepositoryTest {
     @Test
     public void testCreateUser() {
         User user = new User();
-        user.setEmail("findik@eru.com");
-        user.setPassword("findik");
+        user.setEmail("xxx@eru.com");
+        user.setPassword("xxx");
         user.setFirstName("kedi");
-        user.setLastName("findik");
-        user.setPhoneNumber("5532825695");
+        user.setLastName("xxx");
+        user.setPhoneNumber("123456789");
         user.setEnabled(true);
 
         User savedUser = repo.save(user);
@@ -67,12 +67,12 @@ public class UserRepositoryTest {
     public void testCreateAppointment() {
         Appointment appointment = new Appointment();
         appointment.setPettype("kedi");
-        appointment.setDoctorname("dr neslihan");
+        appointment.setDoctorname("dr xxx");
         appointment.setAppointdate("10.06.2021");
         appointment.setAppointstarthour("15:00");
         appointment.setAppointendhour("16:00");
-        appointment.setPatientname("findik findikci");
-        appointment.setEmail("findik@eru.com");
+        appointment.setPatientname("xxx xx");
+        appointment.setEmail("xxx@eru.com");
         appointment.setPhonenumber("1234567898");
 
         Doctors doctors = new Doctors();
@@ -98,7 +98,7 @@ public class UserRepositoryTest {
     @Test
     public void testCreateDoctor() {
         Doctors doctors = new Doctors();
-        doctors.setVetname("neslihan kaplan");
+        doctors.setVetname("xxx xxxx");
         doctors.setExtensionNumber("38111");
         doctors.getVetname();
 
@@ -130,7 +130,7 @@ public class UserRepositoryTest {
 
     @Test
     void testFindByName() {
-        String name = "nes";
+        String name = "xxx";
         Role role = roleRepository.findByName(name);
 
         assertThat(role).isNotNull();
@@ -139,11 +139,11 @@ public class UserRepositoryTest {
     @Test
     public void testCreateCallDoctor() {
         CallDoctor callDoctor = new CallDoctor();
-        callDoctor.setAddress("melikgazi mah. erciyes üni kampüsü, mühendislik fakültesi");
+        callDoctor.setAddress("xxx mah. erciyes üni kampüsü, mühendislik fakültesi");
         callDoctor.setDate("12.06.2020");
-        callDoctor.setType("at");
+        callDoctor.setType("xxx");
         callDoctor.setHour("15:00");
-        callDoctor.setVetName("neslihan kaplan");
+        callDoctor.setVetName("xxx xxx");
 
         CallDoctor savedCall = callDoctorRepository.save(callDoctor);
         CallDoctor exitCall = entityManager.find(CallDoctor.class, savedCall.getId());
